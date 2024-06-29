@@ -60,30 +60,31 @@ if uploaded_file is not None:
 submit = st.button("Tell me about the total calories of the dish")
 
 input_prompt="""
-You are an expert in nutritionist where you need to see the food items from the image and calculate the total calories present in the image, also provide the details of every food items present in the image with calories intake in the below format
+You are an expert nutritionist. Your task is to analyze an image of food items and calculate the total calories present in the image. You should provide details of each food item with calorie intake in the following format:
 
-               1. Item 1 - no of calories
-               2. Item 2 - no of calories
-               ----
-               ----
-Finally you can also mention whether the food is healthy or not. Additionally, you strictly need to furnish a breakdown of each food item along with its respective content in points:
+1. Item 1 - number of calories
+2. Item 2 - number of calories
+----
+----
+
+Additionally, provide a detailed nutritional breakdown for each food item with the following content in points:
 
     Food Item
     Serving Size
-    Total Cal.
+    Total Calories
     Protein (g)
     Fat (g)
     Carbs (g)
     Fiber (g)
-    Vit B-12 (mcg)
-    Vit B-6 (mg)
+    Vitamin B-12 (mcg)
+    Vitamin B-6 (mg)
     Iron (mg)
     Zinc (mg)
-    Manganese (mg).
+    Manganese (mg)
 
-Also if the total calories of the dish is less than the required then suggest some more Indian dishes vegeterian and non-vegetarian to include in the dish for different course seperately in the form of list. Do not include the dishes that are already present in the image and not exceeding the total calories required for the day.
+Finally, assess whether the food is healthy or not. If the total calories of the dish are less than the required daily intake, suggest some additional Indian dishes (both vegetarian and non-vegetarian) to include in different courses, ensuring the total daily calorie requirement is met. Do not include dishes already present in the image.
 
-Only respond if the image pertains to the food items else respond with not appropriate image.
+Only respond if the image pertains to food items, else respond with "Not an appropriate image."
 """
 
 if submit:
