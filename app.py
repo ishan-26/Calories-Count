@@ -53,9 +53,7 @@ if uploaded_file is not None:
 submit = st.button("Tell me about the total calories of the dish")
 
 input_prompt="""
-You are an expert in nutritionist where you need to see the food items from the image
-               and calculate the total calories, also provide the details of every food items present in the imagewith calories intake
-               is below format
+You are an expert in nutritionist where you need to see the food items from the image and calculate the total calories, also provide the details of every food items present in the image with calories intake in the below format
 
                1. Item 1 - no of calories
                2. Item 2 - no of calories
