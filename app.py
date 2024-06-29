@@ -92,7 +92,7 @@ Only respond if the image pertains to the food items else respond with not appro
 
 if submit:
     image_data = input_image_setup(uploaded_file)
-    response = get_gemini_response(input_prompt,image_data)
+    response = get_gemini_response(input_prompt,image_data,input)
 
     st.subheader("Your dish summary:")
     st.write(response)
