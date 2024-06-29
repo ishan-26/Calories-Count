@@ -16,12 +16,12 @@ generation_config = {
   "top_p": 0.95,
   "top_k": 64,
   "max_output_tokens": 8192,
-  "response_mime_type": "image/text/plain",
+  "response_mime_type": "text/plain",
 }
 
 def get_gemini_response(input_prompt, image):
     # ... (your existing code)
- model = genai.GenerativeModel(model_name="gemini-1.5-pro",generation_config=generation_config,)
+ model = genai.GenerativeModel(model_name="gemini-1.5-flash",generation_config=generation_config,)
  response = model.generate_content([input_prompt, image[0]])
  text = response.text
  return text
