@@ -60,14 +60,13 @@ if uploaded_file is not None:
 submit = st.button("Tell me about the total calories of the dish")
 
 input_prompt="""
-You are an expert in nutritionist where you need to see the food items from the image and calculate the total calories, also provide the details of every food items present in the image with calories intake in the below format
+You are an expert in nutritionist where you need to see the food items from the image and calculate the total calories present in the image, also provide the details of every food items present in the image with calories intake in the below format
 
                1. Item 1 - no of calories
                2. Item 2 - no of calories
                ----
                ----
-Finally you can also mention whether the food is healthy or not. Additionally, you strictly need to furnish a breakdown
-of each food item along with its respective content in points:
+Finally you can also mention whether the food is healthy or not. Additionally, you strictly need to furnish a breakdown of each food item along with its respective content in points:
 
     Food Item
     Serving Size
@@ -82,8 +81,7 @@ of each food item along with its respective content in points:
     Zinc (mg)
     Manganese (mg).
 
-Also if the total calories of the dish is less than the required then suggest some more Indian dishes vegeterian and non-vegetarian
-to include in the dish for different course seperately in the form of list. Do not include the dishes that are already present in the image and not exceeding the total calories required for the day.
+Also if the total calories of the dish is less than the required then suggest some more Indian dishes vegeterian and non-vegetarian to include in the dish for different course seperately in the form of list. Do not include the dishes that are already present in the image and not exceeding the total calories required for the day.
 
 Only respond if the image pertains to the food items else respond with not appropriate image.
 """
