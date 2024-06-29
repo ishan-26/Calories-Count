@@ -11,20 +11,18 @@ load_dotenv()  ## load all the environment variables
 
 genai.configure(api_key = os.getenv("GOOGLE_API_KEY"))
 
-generation_config = {
   "temperature": 1,
   "top_p": 0.95,
   "top_k": 64,
   "max_output_tokens": 8192,
   "response_mime_type": "text/plain",
 }
+## Function to load Google Gemini Pro Vision API And get response
 
-def get_gemini_response(input_prompt, image):
-    # ... (your existing code)
-   model = genai.GenerativeModel( model_name="gemini-1.5-pro", generation_config=generation_config,)
-   response = model.generate_content([input_prompt, image[0]])
-   text = response.text
-   return text
+def get_gemini_repsonse(input,image,prompt):
+ model = genai.GenerativeModel(model_name="gemini-1.5-pro",generation_config=generation_config,)     
+ response=model.generate_content([input,image[0],prompt])
+ return response.text
 
 def input_image_setup(uploaded_file):
     # check if file uploaded or not
