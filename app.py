@@ -11,11 +11,18 @@ load_dotenv()  ## load all the environment variables
 
 genai.configure(api_key = os.getenv("GOOGLE_API_KEY"))
 
+generation_config = {
+  "temperature": 1,
+  "top_p": 0.95,
+  "top_k": 64,
+  "max_output_tokens": 8192,
+  "response_mime_type": "text/plain",
+}
+
 def get_gemini_response(input_prompt, image):
     # ... (your existing code)
-    model = genai.GenerativeModel(model_name="gemini-1.5-pro")
+ model = genai.GenerativeModel(model_name="gemini-1.5-pro",generation_config=generation_config,)
     response = model.generate_content([input_prompt, image[0]])
-
     text = response.text
     return text
 
