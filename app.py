@@ -11,6 +11,7 @@ load_dotenv()  ## load all the environment variables
 
 genai.configure(api_key = os.getenv("GOOGLE_API_KEY"))
 
+generation_config = {
   "temperature": 1,
   "top_p": 0.95,
   "top_k": 64,
