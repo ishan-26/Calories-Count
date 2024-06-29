@@ -22,9 +22,9 @@ generation_config = {
 def get_gemini_response(input_prompt, image):
     # ... (your existing code)
  model = genai.GenerativeModel(model_name="gemini-1.5-pro",generation_config=generation_config,)
-    response = model.generate_content([input_prompt, image[0]])
-    text = response.text
-    return text
+ response = model.generate_content([input_prompt, image[0]])
+ text = response.text
+ return text
 
 def input_image_setup(uploaded_file):
     # check if file uploaded or not
