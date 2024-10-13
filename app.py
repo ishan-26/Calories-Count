@@ -38,10 +38,8 @@ def input_image_setup(uploaded_file):
             }
         ]
         return image_parts
-
     else:
-        print("No file uploaded")
-
+        return None  # Explicitly return None if no file is uploaded
 # initialize streamlit app
 
 st.set_page_config(page_title="Calories Advisor")
@@ -59,13 +57,15 @@ if uploaded_file is not None:
 submit = st.button("Tell me about the total calories of the dish")
 
 input_prompt="""
+
 You are an expert nutritionist. Your task is to analyze an image of food items and calculate the total calories present in the image. You should provide details of each food item with calorie intake in the following format:
 
 1. Item 1 - number of calories
 2. Item 2 - number of calories
-----
-----
 
+Provide total amount of calories here.
+----
+----
 Additionally, provide a detailed nutritional breakdown for each food item with the following content in points:
 
     Food Item
@@ -75,20 +75,20 @@ Additionally, provide a detailed nutritional breakdown for each food item with t
     Fat (g)
     Carbs (g)
     Fiber (g)
-    Vitamin B-12 (mcg)
-    Vitamin B-6 (mg)
-    Iron (mg)
-    Zinc (mg)
-    Manganese (mg)
+    
 
-Finally, assess whether the food is healthy or not. If the total calories of the dish are less than the required daily intake, suggest some additional Indian dishes (both vegetarian and non-vegetarian) to include in different courses, ensuring the total daily calorie requirement is met. Do not include dishes already present in the image.
-
+Also adding to this, if the calorie intake is above 600 calories suggest some exercises so to burn those calories with respect to the dish provided, dont show exercise suggestions if calory intake of the meal is less than 600
 Only respond if the image pertains to food items, else respond with "Not an appropriate image."
 """
 
 if submit:
-    image_data = input_image_setup(uploaded_file)
-    response = get_gemini_response(input_prompt,image_data)
-
-    st.subheader("Your dish summary:")
-    st.write(response)
+    if uploaded_file is None:
+        st.error("Please upload an image to get the calorie breakdown.")
+    else:
+        image_data = input_image_setup(uploaded_file)
+        if image_data:  # Make sure image_data is valid
+            response = get_gemini_response(input_prompt, image_data)
+            st.subheader("Your dish summary:")
+            st.write(response)
+        else:
+            st.error("Error processing the image. Please try again.")
