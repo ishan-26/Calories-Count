@@ -20,7 +20,7 @@ generation_config = {
 
 def get_gemini_response(input_prompt, image):
     # ... (your existing code)
- model = genai.GenerativeModel(model_name="gemini-1.5-flash",generation_config=generation_config,)
+ model = genai.GenerativeModel(model_name="gemini-2.0-flash-lite",generation_config=generation_config,)
  response = model.generate_content([input_prompt, image[0]])
  text = response.text
  return text
